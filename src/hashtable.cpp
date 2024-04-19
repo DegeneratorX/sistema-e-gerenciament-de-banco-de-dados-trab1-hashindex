@@ -3,15 +3,38 @@
 //
 
 #include "../includes/hashtable.h"
+#include <iostream>
 
-
-HashTable::HashTable(int tamanho) {
+template<typename T>
+HashTable<T>::HashTable(int tamanho) {
     this->tamanho = tamanho;
-    Noh* dataMap[this->tamanho];
+    this->dataMap = new Noh<T>*[tamanho];
 }
 
-Noh::Noh(std::string& chave, int valor, Noh* prox=nullptr){
+template<typename T>
+void HashTable<T>::printHashTable() {
+    for(int i = 0; i < this->tamanho; i++){
+        std::cout << i << ":" << std::endl;
+        if(this->dataMap[i]){
+            Noh<T>* aux = dataMap[i];
+            while(aux){
+                std::cout << "    {" << aux->getChave() << ", " << aux->getValor() << "}" << std::endl;
+            }
+        }
+    }
+}
+
+
+template<typename T> Noh<T>::Noh(std::string& chave, int valor, Noh* prox){
     this->chave = chave;
     this->valor = valor;
     this->prox = prox;
+}
+
+template<typename T> T Noh<T>::getValor() {
+    return this->valor;
+}
+
+template<typename T> T Noh<T>::getChave() {
+    return this->chave;
 }

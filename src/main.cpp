@@ -1,6 +1,8 @@
 #include <iostream>
+#include <string>
+#include "hashtable.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    HashTable<int>* hash = new HashTable<int>(5);
+    hash->printHashTable();
 }

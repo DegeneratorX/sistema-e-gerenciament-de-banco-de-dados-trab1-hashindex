@@ -11,21 +11,30 @@
 #include <tuple>
 #include <string>
 
+template<typename T>
+class Noh{
+
+private:
+    T chave;
+    int valor;
+    Noh* prox;
+public:
+    Noh(std::string& chave, int valor, Noh* prox=nullptr);
+
+    T getChave();
+
+    T getValor();
+
+};
+
+template<typename T>
 class HashTable{
 private:
     int tamanho;
-
+    Noh<T>** dataMap;
     int hashFunction(std::string chave);
 
 public:
     HashTable(int tamanho=7);
-};
-
-class Noh{
-private:
-    std::string chave;
-    int valor;
-    Noh* prox;
-public:
-    Noh(std::string& chave, int valor, Noh* prox);
+    void printHashTable();
 };

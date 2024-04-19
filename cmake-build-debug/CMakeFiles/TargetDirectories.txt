@@ -1,0 +1,3 @@
+/home/arida01/Documentos/Victor/Projetos/sistema-e-gerenciamento-de-banco-de-dados/trabalho-1-hashing/cmake-build-debug/CMakeFiles/trabalho_1_hashing.dir
+/home/arida01/Documentos/Victor/Projetos/sistema-e-gerenciamento-de-banco-de-dados/trabalho-1-hashing/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/arida01/Documentos/Victor/Projetos/sistema-e-gerenciamento-de-banco-de-dados/trabalho-1-hashing/cmake-build-debug/CMakeFiles/rebuild_cache.dir

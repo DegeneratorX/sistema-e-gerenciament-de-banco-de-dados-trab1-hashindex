@@ -1,3 +1,3 @@
-C:/Users/Diassis2023/Documents/victor_projetos/sistema-e-gerenciamento-de-banco-de-dados-trab1-hashindex/cmake-build-debug/CMakeFiles/trabalho_1_hashing.dir
-C:/Users/Diassis2023/Documents/victor_projetos/sistema-e-gerenciamento-de-banco-de-dados-trab1-hashindex/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Diassis2023/Documents/victor_projetos/sistema-e-gerenciamento-de-banco-de-dados-trab1-hashindex/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/arida01/Documentos/Victor/Projetos/sistema-e-gerenciamento-de-banco-de-dados-trab1-hashindex/cmake-build-debug/CMakeFiles/sgbd_trabalho1_hashindex.dir
+/home/arida01/Documentos/Victor/Projetos/sistema-e-gerenciamento-de-banco-de-dados-trab1-hashindex/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/arida01/Documentos/Victor/Projetos/sistema-e-gerenciamento-de-banco-de-dados-trab1-hashindex/cmake-build-debug/CMakeFiles/rebuild_cache.dir

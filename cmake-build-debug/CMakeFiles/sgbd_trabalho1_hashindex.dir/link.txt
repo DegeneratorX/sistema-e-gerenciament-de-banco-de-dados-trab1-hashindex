@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/sgbd_trabalho1_hashindex.dir/src/main.cpp.o CMakeFiles/sgbd_trabalho1_hashindex.dir/src/hashtable.cpp.o -o sgbd_trabalho1_hashindex 

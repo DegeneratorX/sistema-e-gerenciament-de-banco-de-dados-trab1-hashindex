@@ -3,6 +3,6 @@
 #include "hashtable.h"
 
 int main() {
-    HashTable<int>* hash = new HashTable<int>(5);
+    HashTable* hash = new HashTable(5);
     hash->printHashTable();
 }

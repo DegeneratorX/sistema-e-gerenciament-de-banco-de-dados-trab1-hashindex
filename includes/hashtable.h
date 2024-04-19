@@ -11,27 +11,30 @@
 #include <tuple>
 #include <string>
 
-template<typename T>
 class Noh{
 
 private:
-    T chave;
-    int valor;
-    Noh* prox;
+    std::string chave;
+    std::vector<std::string> valores;
+    std::vector<Noh*> filhos;
+    int cont_valores = static_cast<int>(valores.size());
+    Noh* pai = nullptr; // Se é nullptr, é um nó raíz.
+    bool eh_folha;
+
 public:
-    Noh(std::string& chave, int valor, Noh* prox=nullptr);
+    Noh(std::string& chave, std::vector<std::string> valores, Noh* prox=nullptr);
 
-    T getChave();
+    std::string getChave();
 
-    T getValor();
+    std::string getValor();
 
 };
 
-template<typename T>
+
 class HashTable{
 private:
     int tamanho;
-    Noh<T>** dataMap;
+    Noh** dataMap;
     int hashFunction(std::string chave);
 
 public:

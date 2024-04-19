@@ -5,18 +5,18 @@
 #include "../includes/hashtable.h"
 #include <iostream>
 
-template<typename T>
-HashTable<T>::HashTable(int tamanho) {
+
+HashTable::HashTable(int tamanho) {
     this->tamanho = tamanho;
-    this->dataMap = new Noh<T>*[tamanho];
+    this->dataMap = new Noh*[tamanho];
 }
 
-template<typename T>
-void HashTable<T>::printHashTable() {
+
+void HashTable::printHashTable() {
     for(int i = 0; i < this->tamanho; i++){
         std::cout << i << ":" << std::endl;
         if(this->dataMap[i]){
-            Noh<T>* aux = dataMap[i];
+            Noh* aux = dataMap[i];
             while(aux){
                 std::cout << "    {" << aux->getChave() << ", " << aux->getValor() << "}" << std::endl;
             }
@@ -25,16 +25,18 @@ void HashTable<T>::printHashTable() {
 }
 
 
-template<typename T> Noh<T>::Noh(std::string& chave, int valor, Noh* prox){
+Noh::Noh(std::string& chave, std::vector<std::string> valores, Noh* prox){
     this->chave = chave;
-    this->valor = valor;
+    this->valores = valores;
     this->prox = prox;
 }
 
-template<typename T> T Noh<T>::getValor() {
-    return this->valor;
-}
-
-template<typename T> T Noh<T>::getChave() {
+std::string Noh::getChave() {
     return this->chave;
 }
+
+std::vector<std::string> Noh::getValor() {
+    return this->valores;
+}
+
+

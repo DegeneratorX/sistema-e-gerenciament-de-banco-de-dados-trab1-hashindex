@@ -5,4 +5,6 @@ set(CMAKE_CXX_STANDARD 17)
 
 include_directories(includes)
 add_executable(sgbd_trabalho1_hashindex src/main.cpp
-        src/hashtable.cpp)
+        src/hashtable.cpp
+        src/bplustree.cpp
+        includes/bplustree.h)

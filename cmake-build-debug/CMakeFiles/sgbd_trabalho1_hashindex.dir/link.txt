@@ -1,1 +1,3 @@
-/usr/bin/c++ -g CMakeFiles/sgbd_trabalho1_hashindex.dir/src/main.cpp.o CMakeFiles/sgbd_trabalho1_hashindex.dir/src/hashtable.cpp.o -o sgbd_trabalho1_hashindex 
+"C:\Program Files\JetBrains\CLion 2024.1\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\sgbd_trabalho1_hashindex.dir/objects.a
+C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ar.exe qc CMakeFiles\sgbd_trabalho1_hashindex.dir/objects.a @CMakeFiles\sgbd_trabalho1_hashindex.dir\objects1.rsp
+C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE -g -Wl,--whole-archive CMakeFiles\sgbd_trabalho1_hashindex.dir/objects.a -Wl,--no-whole-archive -o sgbd_trabalho1_hashindex.exe -Wl,--out-implib,libsgbd_trabalho1_hashindex.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\sgbd_trabalho1_hashindex.dir\linkLibs.rsp

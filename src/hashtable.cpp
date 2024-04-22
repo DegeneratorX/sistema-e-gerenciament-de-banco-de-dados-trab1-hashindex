@@ -3,40 +3,22 @@
 //
 
 #include "../includes/hashtable.h"
-#include <iostream>
 
-
+// Criação da Hash
 HashTable::HashTable(int tamanho) {
     this->tamanho = tamanho;
-    this->dataMap = new Noh*[tamanho];
+
+    // Essa tabela hash contém nós raíz. Esse nó só pode ter 1 valor, e ele tem esquerdo e direito.
+    // Crio com o tamanho que forneço.
+    this->dataMap = new PonteiroParaRaiz*[tamanho];
 }
 
 
-void HashTable::printHashTable() {
-    for(int i = 0; i < this->tamanho; i++){
-        std::cout << i << ":" << std::endl;
-        if(this->dataMap[i]){
-            Noh* aux = dataMap[i];
-            while(aux){
-                std::cout << "    {" << aux->getChave() << ", " << aux->getValor() << "}" << std::endl;
-            }
-        }
+int HashTable::funcaoHash(std::string chave) const {
+    int hash = 0;
+    for (int i = 0; i < chave.length(); i++){
+        int ascii = int(chave[i]);
+        hash = (hash + ascii * 23) % this->tamanho;
     }
+    return hash;
 }
-
-
-Noh::Noh(std::string& chave, std::vector<std::string> valores, Noh* prox){
-    this->chave = chave;
-    this->valores = valores;
-    this->prox = prox;
-}
-
-std::string Noh::getChave() {
-    return this->chave;
-}
-
-std::vector<std::string> Noh::getValor() {
-    return this->valores;
-}
-
-

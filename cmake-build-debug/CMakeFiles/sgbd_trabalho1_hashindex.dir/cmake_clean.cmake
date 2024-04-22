@@ -1,9 +1,13 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/sgbd_trabalho1_hashindex.dir/src/hashtable.cpp.o"
-  "CMakeFiles/sgbd_trabalho1_hashindex.dir/src/hashtable.cpp.o.d"
-  "CMakeFiles/sgbd_trabalho1_hashindex.dir/src/main.cpp.o"
-  "CMakeFiles/sgbd_trabalho1_hashindex.dir/src/main.cpp.o.d"
-  "sgbd_trabalho1_hashindex"
+  "CMakeFiles/sgbd_trabalho1_hashindex.dir/src/bplustree.cpp.obj"
+  "CMakeFiles/sgbd_trabalho1_hashindex.dir/src/bplustree.cpp.obj.d"
+  "CMakeFiles/sgbd_trabalho1_hashindex.dir/src/hashtable.cpp.obj"
+  "CMakeFiles/sgbd_trabalho1_hashindex.dir/src/hashtable.cpp.obj.d"
+  "CMakeFiles/sgbd_trabalho1_hashindex.dir/src/main.cpp.obj"
+  "CMakeFiles/sgbd_trabalho1_hashindex.dir/src/main.cpp.obj.d"
+  "libsgbd_trabalho1_hashindex.dll.a"
+  "sgbd_trabalho1_hashindex.exe"
+  "sgbd_trabalho1_hashindex.exe.manifest"
   "sgbd_trabalho1_hashindex.pdb"
 )
 

@@ -8,29 +8,29 @@
 // MÉTODOS DOS NÓS //
 /////////////////////
 
-Noh::Noh(bool ehFolha) {
+NohB::NohB(bool ehFolha) {
     this->ehFolha = ehFolha;
     this->prox = nullptr;
 }
 
-void Noh::inserirChaveValorEmNohFolha(const std::string &chave, const std::string &valor) {
+void NohB::inserirChaveValorEmNohFolha(const std::string &chave, const std::string &valor) {
     auto menorValor = this->buscaBinaria(this->vetorChaves, chave);
     this->vetorChaves.insert(this->vetorChaves.begin() + menorValor, chave);
     this->vetorValores.insert(this->vetorValores.begin() + menorValor, valor);
 }
 
-void Noh::inserirChavePonteiroEmNohInterno(const std::string &chave, Noh *filho) {
+void NohB::inserirChavePonteiroEmNohInterno(const std::string &chave, NohB *filho) {
     //auto menorValor = std::lower_bound(vetorChaves.begin(), vetorChaves.end(), chave);
     auto menorValor = this->buscaBinaria(this->vetorChaves, chave);
     this->vetorChaves.insert(this->vetorChaves.begin(), + menorValor, chave);
     this->vetorFilhos.insert(this->vetorFilhos.begin() + menorValor + 1, filho);
 }
 
-bool Noh::temOverflow(int maximoChaves) {
+bool NohB::temOverflow(int maximoChaves) {
     return vetorChaves.size() > maximoChaves;
 }
 
-int Noh::buscaBinaria(const std::vector<std::string> &vetorChaves, const std::string chave) {
+int NohB::buscaBinaria(const std::vector<std::string> &vetorChaves, const std::string chave) {
     int low = 0, high = this->vetorChaves.size() - 1, mid;
     while (low <= high) {
         mid = low + (high - low) / 2;
@@ -53,9 +53,9 @@ ArvoreBPlus::ArvoreBPlus(int grau) {
     this->maximoChaves = grau-1;
 }
 
-void ArvoreBPlus::separarNohFolhaComOverflow(Noh* folha) {
+void ArvoreBPlus::separarNohFolhaComOverflow(NohB* folha) {
     int splitIndex = this->maximoChaves / 2;
-    Noh* novaFolha = new Noh();
+    NohB* novaFolha = new NohB();
     novaFolha->vetorChaves.assign(folha->vetorChaves.begin() + splitIndex, folha->vetorChaves.end());
     novaFolha->vetorValores.assign(folha->vetorValores.begin() + splitIndex, folha->vetorValores.end());
     folha->vetorChaves.resize(splitIndex);
@@ -65,7 +65,7 @@ void ArvoreBPlus::separarNohFolhaComOverflow(Noh* folha) {
     folha->prox = novaFolha;
 
     if (folha == this->raiz) {
-        Noh* novaRaiz = new Noh(false);
+        NohB* novaRaiz = new NohB(false);
         novaRaiz->vetorChaves.push_back(novaFolha->vetorChaves.front());
         novaRaiz->vetorFilhos.push_back(folha);
         novaRaiz->vetorFilhos.push_back(novaFolha);
@@ -75,11 +75,11 @@ void ArvoreBPlus::separarNohFolhaComOverflow(Noh* folha) {
     }
 }
 
-void ArvoreBPlus::separarNohInternoComOverflow(Noh* interno) {
+void ArvoreBPlus::separarNohInternoComOverflow(NohB* interno) {
     int indiceDivisao = interno->vetorChaves.size() / 2;
     std::string promoverChave = interno->vetorChaves[indiceDivisao];
 
-    Noh* novoInterno = new Noh(false);
+    NohB* novoInterno = new NohB(false);
     novoInterno->vetorChaves.assign(interno->vetorChaves.begin() + indiceDivisao + 1, interno->vetorChaves.end());
     novoInterno->vetorFilhos.assign(interno->vetorFilhos.begin() + indiceDivisao + 1, interno->vetorFilhos.end());
 
@@ -89,9 +89,9 @@ void ArvoreBPlus::separarNohInternoComOverflow(Noh* interno) {
     this->inserirNohPai(interno, promoverChave, novoInterno);
 }
 
-void ArvoreBPlus::inserirNohPai(Noh *esq, const std::string& chave, Noh *dir) {
+void ArvoreBPlus::inserirNohPai(NohB *esq, const std::string& chave, NohB *dir) {
     if (esq == this->raiz) {
-        Noh* novaRaiz = new Noh(false);
+        NohB* novaRaiz = new NohB(false);
         novaRaiz->vetorChaves.push_back(chave);
         novaRaiz->vetorFilhos.push_back(esq);
         novaRaiz->vetorFilhos.push_back(dir);
@@ -99,26 +99,26 @@ void ArvoreBPlus::inserirNohPai(Noh *esq, const std::string& chave, Noh *dir) {
         return;
     }
 
-    Noh* pai = this->acharPai(this->raiz, esq);
+    NohB* pai = this->acharPai(this->raiz, esq);
     pai->inserirChavePonteiroEmNohInterno(chave, dir);
     if (pai->temOverflow(this->maximoChaves)) {
         this->separarNohInternoComOverflow(pai);
     }
 }
 
-Noh* ArvoreBPlus::acharPai(Noh* atual, Noh* filho) {
+NohB* ArvoreBPlus::acharPai(NohB* atual, NohB* filho) {
     if (atual->ehFolha || atual->vetorFilhos[0]->ehFolha) return nullptr;
 
     for (int i = 0; i < atual->vetorFilhos.size(); i++) {
         if (atual->vetorFilhos[i] == filho) return atual;
-        Noh* possivelPai = acharPai(atual->vetorFilhos[i], filho);
+        NohB* possivelPai = acharPai(atual->vetorFilhos[i], filho);
         if (possivelPai) return possivelPai;
     }
     return nullptr;
 }
 
-Noh* ArvoreBPlus::acharFolha(const std::string &chave) {
-    Noh* atual = this->raiz;
+NohB* ArvoreBPlus::acharFolha(const std::string &chave) {
+    NohB* atual = this->raiz;
     while (atual && !atual->ehFolha) {
         for (int i = 0; i < atual->vetorChaves.size(); i++) {
             if (chave < atual->vetorChaves[i]) {
@@ -136,13 +136,13 @@ Noh* ArvoreBPlus::acharFolha(const std::string &chave) {
 
 void ArvoreBPlus::inserir(const std::string &chave, const std::string &valor) {
     if (!this->raiz) {
-        this->raiz = new Noh();
+        this->raiz = new NohB();
         this->raiz->vetorChaves.push_back(chave);
         this->raiz->vetorValores.push_back(valor);
         return;
     }
 
-    Noh* folha = this->acharFolha(chave);
+    NohB* folha = this->acharFolha(chave);
     std::cout << folha->vetorChaves.size() << std::endl;
     folha->inserirChaveValorEmNohFolha(chave, valor);
     if (folha->temOverflow(this->maximoChaves)) {
@@ -156,7 +156,7 @@ void ArvoreBPlus::mostrarArvore() {
         return;
     }
 
-    std::queue<Noh*> filaNohs;
+    std::queue<NohB*> filaNohs;
     filaNohs.push(this->raiz);
     int level = 0;
 
@@ -165,7 +165,7 @@ void ArvoreBPlus::mostrarArvore() {
         int tamanhoFila = filaNohs.size();
         std::cout << "Nível " << level << ": ";
         while (tamanhoFila > 0) {
-            Noh* atual = filaNohs.front();
+            NohB* atual = filaNohs.front();
             filaNohs.pop();
 
             // Exibe as chaves do nó
@@ -178,7 +178,7 @@ void ArvoreBPlus::mostrarArvore() {
 
             // Se não for folha, adiciona os filhos na fila
             if (!atual->ehFolha) {
-                for (Noh* child : atual->vetorFilhos) {
+                for (NohB* child : atual->vetorFilhos) {
                     filaNohs.push(child);
                 }
             }
@@ -195,7 +195,7 @@ void ArvoreBPlus::mostrarFolhas() {
         return;
     }
 
-    Noh* current = this->raiz;
+    NohB* current = this->raiz;
     // Encontra o primeiro nó folha
     while (current && !current->ehFolha) {
         current = current->vetorFilhos[0];

@@ -4,16 +4,19 @@
 int main() {
     //HashTable* hash = new HashTable(5);
     //hash->printHashTable();
-    ArvoreBPlus* bPlus = new ArvoreBPlus(4);
+    HashTable* ht = new HashTable(5);
+    ht->inserir("Ola", "mundo");
+    ht->inserir("Teste", "123");
+    ht->inserir("Trynda", "mere");
+    ht->inserir("Forge", "points");
+    ht->inserir("APS", "TC");
+    ht->inserir("CANA", "GRAFOS");
+    ht->inserir("Discreta", "Runidi");
+    ht->inserir("Automatos", "Francicleber");
+    ht->inserir("Carro", "Moto");
+    ht->inserir("Cachaça", "Pinga");
+    ht->inserir("Tequila", "Vinho");
 
-    bPlus->inserir("Ola", "mundo");
-    bPlus->inserir("Teste", "123");
-    bPlus->inserir("PAU", "TORA");
-    bPlus->inserir("Mae", "n Ve");
-    bPlus->inserir("bestera", "naninha");
+    ht->printHashTable();
 
-    //bPlus->mostrarFolhas();
-    bPlus->mostrarArvore();
-
-    delete bPlus;
 }

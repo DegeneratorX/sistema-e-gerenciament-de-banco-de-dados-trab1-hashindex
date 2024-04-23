@@ -7,4 +7,6 @@ include_directories(includes)
 add_executable(sgbd_trabalho1_hashindex src/main.cpp
         src/hashtable.cpp
         src/bplustree.cpp
-        includes/bplustree.h)
+        includes/bplustree.h
+        includes/linkedinlist.h
+        src/linkedinlist.cpp)

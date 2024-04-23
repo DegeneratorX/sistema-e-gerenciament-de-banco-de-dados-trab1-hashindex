@@ -11,17 +11,17 @@
 #ifndef SGBD_TRABALHO1_HASHINDEX_BPLUSTREE_H
 #define SGBD_TRABALHO1_HASHINDEX_BPLUSTREE_H
 
-struct Noh{
+struct NohB{
 
     std::vector<std::string> vetorChaves;
     std::vector<std::string> vetorValores;
-    std::vector<Noh*> vetorFilhos;
+    std::vector<NohB*> vetorFilhos;
     bool ehFolha;
-    Noh* prox;
+    NohB* prox;
 
-    Noh(bool ehFolha = true);
+    NohB(bool ehFolha = true);
     void inserirChaveValorEmNohFolha(const std::string& chave, const std::string& valor);
-    void inserirChavePonteiroEmNohInterno(const std::string& chave, Noh* filho);
+    void inserirChavePonteiroEmNohInterno(const std::string& chave, NohB* filho);
     bool temOverflow(int maximoChaves);
 private:
     int buscaBinaria(const std::vector<std::string>& vetorChaves, const std::string chave);
@@ -29,18 +29,18 @@ private:
 
 class ArvoreBPlus {
 private:
-    Noh* raiz;
+    NohB* raiz;
     int maximoChaves;
 
-    void separarNohFolhaComOverflow(Noh* folha);
-    void separarNohInternoComOverflow(Noh* interno);
-    void inserirNohPai(Noh* esq, const std::string& chave, Noh* dir);
-    Noh* acharPai(Noh* atual, Noh* filho);
+    void separarNohFolhaComOverflow(NohB* folha);
+    void separarNohInternoComOverflow(NohB* interno);
+    void inserirNohPai(NohB* esq, const std::string& chave, NohB* dir);
+    NohB* acharPai(NohB* atual, NohB* filho);
 
 public:
     ArvoreBPlus(int grau);
 
-    Noh* acharFolha(const std::string& chave);
+    NohB* acharFolha(const std::string& chave);
     void inserir(const std::string& chave, const std::string& valor);
     void mostrarArvore();
     void mostrarFolhas();

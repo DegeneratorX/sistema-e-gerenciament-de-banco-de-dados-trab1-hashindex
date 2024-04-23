@@ -6,21 +6,27 @@
 #define SGBD_TRABALHO1_HASHINDEX_HASHTABLE_H
 
 #include "bplustree.h"
+#include "linkedinlist.h"
 
-struct PonteiroParaRaiz{
+struct PonteiroParaLinkedinList{
     std::string chave;
     std::string valor;
-    Noh* prox;
+    LinkedinList* lista;
+
+    PonteiroParaLinkedinList(const std::string& chave = "", const std::string& valor = "", LinkedinList* lista = new LinkedinList());
 };
 
 class HashTable{
-private:
+public:
     int tamanho;
-    PonteiroParaRaiz** dataMap;
-    int funcaoHash(std::string chave) const;
+    PonteiroParaLinkedinList** dataMap;
+    int funcaoHash(const std::string chave) const;
 
 public:
     HashTable(int tamanho=7);
+    void inserir(const std::string& chave, const std::string& valor);
+    void remover(const std::string& chave);
+    std::string consultarValor(const std::string& chave);
     void printHashTable();
 };
 

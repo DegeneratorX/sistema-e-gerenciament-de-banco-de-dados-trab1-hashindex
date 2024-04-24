@@ -14,6 +14,8 @@ public:
     std::string* paginas;
     int tam;
     int profundidadeLocal;
+
+    Bucket();
 };
 
 

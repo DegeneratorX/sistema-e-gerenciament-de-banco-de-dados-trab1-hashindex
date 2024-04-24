@@ -1,11 +1,13 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/sgbd_trabalho1_hash.dir/src/Bucket.cpp.o"
-  "CMakeFiles/sgbd_trabalho1_hash.dir/src/Bucket.cpp.o.d"
-  "CMakeFiles/sgbd_trabalho1_hash.dir/src/HashTable.cpp.o"
-  "CMakeFiles/sgbd_trabalho1_hash.dir/src/HashTable.cpp.o.d"
-  "CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o"
-  "CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o.d"
-  "sgbd_trabalho1_hash"
+  "CMakeFiles/sgbd_trabalho1_hash.dir/src/Bucket.cpp.obj"
+  "CMakeFiles/sgbd_trabalho1_hash.dir/src/Bucket.cpp.obj.d"
+  "CMakeFiles/sgbd_trabalho1_hash.dir/src/HashTable.cpp.obj"
+  "CMakeFiles/sgbd_trabalho1_hash.dir/src/HashTable.cpp.obj.d"
+  "CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.obj"
+  "CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.obj.d"
+  "libsgbd_trabalho1_hash.dll.a"
+  "sgbd_trabalho1_hash.exe"
+  "sgbd_trabalho1_hash.exe.manifest"
   "sgbd_trabalho1_hash.pdb"
 )
 

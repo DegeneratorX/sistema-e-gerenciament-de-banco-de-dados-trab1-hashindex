@@ -18,7 +18,7 @@ void HashTable::alocarBuckets(){
         this->vetorBuckets[i] = new Bucket();
         this->vetorBuckets[i]->tam = 0;
         this->vetorBuckets[i]->profundidadeLocal = profundidadeGlobal;
-        this->vetorBuckets[i]->arquivo = "data/buckets/" + std::to_string(i) + ".txt";
+        this->vetorBuckets[i]->arquivo = "../data/buckets/" + std::to_string(i) + ".txt";
 
         std::ofstream criarArquivo(this->vetorBuckets[i]->arquivo);
 

@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "sgbd_trabalho1_hash.exe"
-		},
-		{
-			"path" : "sgbd_trabalho1_hash.pdb"
+			"path" : "sgbd_trabalho1_hash"
 		}
 	],
 	"backtrace" : 1,
@@ -52,7 +49,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "C:/Users/Diassis2023/Documents/victor_projetos/sistema-e-gerenciamento-de-banco-de-dados-trab1-hashindex/includes"
+					"path" : "/home/arida01/Documentos/Victor/Projetos/sistema-e-gerenciamento-de-banco-de-dados-trab1-hashindex/includes"
 				}
 			],
 			"language" : "CXX",
@@ -84,16 +81,12 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "sgbd_trabalho1_hash",
-	"nameOnDisk" : "sgbd_trabalho1_hash.exe",
+	"nameOnDisk" : "sgbd_trabalho1_hash",
 	"paths" : 
 	{
 		"build" : ".",

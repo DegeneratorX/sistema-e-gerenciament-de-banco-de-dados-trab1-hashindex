@@ -11,7 +11,7 @@
 class Bucket {
 public:
     std::string arquivo;
-    std::string* paginas;
+    int id;
     int tam;
     int profundidadeLocal;
 

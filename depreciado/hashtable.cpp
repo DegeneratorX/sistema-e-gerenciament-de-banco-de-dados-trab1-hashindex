@@ -2,7 +2,8 @@
 // Created by arida01 on 18/04/24.
 //
 
-#include "../includes/hashtable.h"
+#include "hashtable.h"
+#include "HashTable.h"
 
 
 PonteiroParaLinkedinList::PonteiroParaLinkedinList(const std::string& chave, const std::string& valor, LinkedinList* lista) {
@@ -22,6 +23,7 @@ HashTable::HashTable(int tamanho) {
         dataMap[i] = new PonteiroParaLinkedinList();
     }
 }
+
 
 
 int HashTable::funcaoHash(const std::string chave) const {

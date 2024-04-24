@@ -117,96 +117,72 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named sgbd_trabalho1_hashindex
+# Target rules for targets named sgbd_trabalho1_hash
 
 # Build rule for target.
-sgbd_trabalho1_hashindex: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sgbd_trabalho1_hashindex
-.PHONY : sgbd_trabalho1_hashindex
+sgbd_trabalho1_hash: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sgbd_trabalho1_hash
+.PHONY : sgbd_trabalho1_hash
 
 # fast build rule for target.
-sgbd_trabalho1_hashindex/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hashindex.dir/build.make CMakeFiles/sgbd_trabalho1_hashindex.dir/build
-.PHONY : sgbd_trabalho1_hashindex/fast
+sgbd_trabalho1_hash/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hash.dir/build.make CMakeFiles/sgbd_trabalho1_hash.dir/build
+.PHONY : sgbd_trabalho1_hash/fast
 
-src/bplustree.o: src/bplustree.cpp.o
-.PHONY : src/bplustree.o
-
-# target to build an object file
-src/bplustree.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hashindex.dir/build.make CMakeFiles/sgbd_trabalho1_hashindex.dir/src/bplustree.cpp.o
-.PHONY : src/bplustree.cpp.o
-
-src/bplustree.i: src/bplustree.cpp.i
-.PHONY : src/bplustree.i
-
-# target to preprocess a source file
-src/bplustree.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hashindex.dir/build.make CMakeFiles/sgbd_trabalho1_hashindex.dir/src/bplustree.cpp.i
-.PHONY : src/bplustree.cpp.i
-
-src/bplustree.s: src/bplustree.cpp.s
-.PHONY : src/bplustree.s
-
-# target to generate assembly for a file
-src/bplustree.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hashindex.dir/build.make CMakeFiles/sgbd_trabalho1_hashindex.dir/src/bplustree.cpp.s
-.PHONY : src/bplustree.cpp.s
-
-src/hashtable.o: src/hashtable.cpp.o
-.PHONY : src/hashtable.o
+src/Bucket.o: src/Bucket.cpp.o
+.PHONY : src/Bucket.o
 
 # target to build an object file
-src/hashtable.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hashindex.dir/build.make CMakeFiles/sgbd_trabalho1_hashindex.dir/src/hashtable.cpp.o
-.PHONY : src/hashtable.cpp.o
+src/Bucket.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hash.dir/build.make CMakeFiles/sgbd_trabalho1_hash.dir/src/Bucket.cpp.o
+.PHONY : src/Bucket.cpp.o
 
-src/hashtable.i: src/hashtable.cpp.i
-.PHONY : src/hashtable.i
+src/Bucket.i: src/Bucket.cpp.i
+.PHONY : src/Bucket.i
 
 # target to preprocess a source file
-src/hashtable.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hashindex.dir/build.make CMakeFiles/sgbd_trabalho1_hashindex.dir/src/hashtable.cpp.i
-.PHONY : src/hashtable.cpp.i
+src/Bucket.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hash.dir/build.make CMakeFiles/sgbd_trabalho1_hash.dir/src/Bucket.cpp.i
+.PHONY : src/Bucket.cpp.i
 
-src/hashtable.s: src/hashtable.cpp.s
-.PHONY : src/hashtable.s
+src/Bucket.s: src/Bucket.cpp.s
+.PHONY : src/Bucket.s
 
 # target to generate assembly for a file
-src/hashtable.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hashindex.dir/build.make CMakeFiles/sgbd_trabalho1_hashindex.dir/src/hashtable.cpp.s
-.PHONY : src/hashtable.cpp.s
+src/Bucket.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hash.dir/build.make CMakeFiles/sgbd_trabalho1_hash.dir/src/Bucket.cpp.s
+.PHONY : src/Bucket.cpp.s
 
-src/linkedinlist.o: src/linkedinlist.cpp.o
-.PHONY : src/linkedinlist.o
+src/HashTable.o: src/HashTable.cpp.o
+.PHONY : src/HashTable.o
 
 # target to build an object file
-src/linkedinlist.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hashindex.dir/build.make CMakeFiles/sgbd_trabalho1_hashindex.dir/src/linkedinlist.cpp.o
-.PHONY : src/linkedinlist.cpp.o
+src/HashTable.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hash.dir/build.make CMakeFiles/sgbd_trabalho1_hash.dir/src/HashTable.cpp.o
+.PHONY : src/HashTable.cpp.o
 
-src/linkedinlist.i: src/linkedinlist.cpp.i
-.PHONY : src/linkedinlist.i
+src/HashTable.i: src/HashTable.cpp.i
+.PHONY : src/HashTable.i
 
 # target to preprocess a source file
-src/linkedinlist.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hashindex.dir/build.make CMakeFiles/sgbd_trabalho1_hashindex.dir/src/linkedinlist.cpp.i
-.PHONY : src/linkedinlist.cpp.i
+src/HashTable.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hash.dir/build.make CMakeFiles/sgbd_trabalho1_hash.dir/src/HashTable.cpp.i
+.PHONY : src/HashTable.cpp.i
 
-src/linkedinlist.s: src/linkedinlist.cpp.s
-.PHONY : src/linkedinlist.s
+src/HashTable.s: src/HashTable.cpp.s
+.PHONY : src/HashTable.s
 
 # target to generate assembly for a file
-src/linkedinlist.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hashindex.dir/build.make CMakeFiles/sgbd_trabalho1_hashindex.dir/src/linkedinlist.cpp.s
-.PHONY : src/linkedinlist.cpp.s
+src/HashTable.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hash.dir/build.make CMakeFiles/sgbd_trabalho1_hash.dir/src/HashTable.cpp.s
+.PHONY : src/HashTable.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hashindex.dir/build.make CMakeFiles/sgbd_trabalho1_hashindex.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hash.dir/build.make CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -214,7 +190,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hashindex.dir/build.make CMakeFiles/sgbd_trabalho1_hashindex.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hash.dir/build.make CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -222,7 +198,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hashindex.dir/build.make CMakeFiles/sgbd_trabalho1_hashindex.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sgbd_trabalho1_hash.dir/build.make CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -233,16 +209,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... sgbd_trabalho1_hashindex"
-	@echo "... src/bplustree.o"
-	@echo "... src/bplustree.i"
-	@echo "... src/bplustree.s"
-	@echo "... src/hashtable.o"
-	@echo "... src/hashtable.i"
-	@echo "... src/hashtable.s"
-	@echo "... src/linkedinlist.o"
-	@echo "... src/linkedinlist.i"
-	@echo "... src/linkedinlist.s"
+	@echo "... sgbd_trabalho1_hash"
+	@echo "... src/Bucket.o"
+	@echo "... src/Bucket.i"
+	@echo "... src/Bucket.s"
+	@echo "... src/HashTable.o"
+	@echo "... src/HashTable.i"
+	@echo "... src/HashTable.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

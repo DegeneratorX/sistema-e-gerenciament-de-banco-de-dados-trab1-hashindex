@@ -2,10 +2,9 @@
 // Created by arida01 on 18/04/24.
 //
 
-#ifndef SGBD_TRABALHO1_HASHINDEX_HASHTABLE_H
-#define SGBD_TRABALHO1_HASHINDEX_HASHTABLE_H
+#ifndef SGBD_TRABALHO1_HASH_HASHTABLE_H
+#define SGBD_TRABALHO1_HASH_HASHTABLE_H
 
-#include "bplustree.h"
 #include "linkedinlist.h"
 
 struct PonteiroParaLinkedinList{
@@ -23,11 +22,11 @@ public:
     int funcaoHash(const std::string chave) const;
 
 public:
-    HashTable(int tamanho=7);
+    HashTable(int profundidadeGlobal=7);
     void inserir(const std::string& chave, const std::string& valor);
     void remover(const std::string& chave);
     std::string consultarValor(const std::string& chave);
     void printHashTable();
 };
 
-#endif //SGBD_TRABALHO1_HASHINDEX_HASHTABLE_H
+#endif //SGBD_TRABALHO1_HASH_HASHTABLE_H

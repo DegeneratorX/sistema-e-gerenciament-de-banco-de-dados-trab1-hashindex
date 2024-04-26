@@ -2,8 +2,8 @@
 #include "HashTable.h"
 
 int main(){
-    HashTable* ht = new HashTable(2, "../data/indices/indice.txt");
-    ht->carregarTabela(ht);
+    HashTable* ht = new HashTable(0);
+    //ht->carregarTabela(ht);
     leituraInTxt("../data/io/in.txt","../data/io/out.txt", ht);
     /*
     ht->inserir(2, "2");

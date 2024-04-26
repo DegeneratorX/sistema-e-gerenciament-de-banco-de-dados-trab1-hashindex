@@ -19,12 +19,11 @@
  * caminho de onde esse arquivo vai ser criado em seguida (../data/buckets/id.txt). Se der erro na criação, ele dá um
  * rollback e apaga os arquivos inicialmente criados.
  */
-HashTable::HashTable(int profundidadeGlobal, const std::string& pathIndice){
+HashTable::HashTable(int profundidadeGlobal){
     this->profundidadeGlobal = profundidadeGlobal;
     this->qtdDeBuckets = static_cast<int>(std::pow(2, profundidadeGlobal));
     this->vetorDeBuckets.resize(this->qtdDeBuckets);
     this->pathIndice = pathIndice;
-    this->atualizarIndice();
 
     for (int i = 0; i < this->qtdDeBuckets; i++){
         const std::string pathDoBucket = "../data/buckets/" + std::to_string(i) + ".txt";
@@ -118,7 +117,6 @@ void HashTable::carregarTabela(HashTable* ht) {
 void HashTable::inserir(int chave, const std::string& valor){
 
     int indiceDoBucket = this->funcaoHash(chave);
-    std::string pathBucket = this->getBucketPath(indiceDoBucket);
 
     // Verificação que faço pra ver se o bucket que quero inserir está vazio e já foi um bucket previamente usado com PL
     // incrementado, mas que depois de esvaziar foi decrementado
@@ -408,6 +406,7 @@ void leituraInTxt(const std::string& inTxt, const std::string& outTxt, HashTable
     std::string linha;
     getline(in, linha);  // Lê a profundidade global inicial
     int profundidadeGlobalInicial = std::stoi(linha.substr(3));
+    HashTable* ht2 = new HashTable(profundidadeGlobalInicial);
     out << linha << std::endl;  // Escreve a profundidade global inicial no arquivo de saída
 
     while (getline(in, linha)) {
@@ -418,24 +417,24 @@ void leituraInTxt(const std::string& inTxt, const std::string& outTxt, HashTable
         int chave = std::stoi(chaveStr);
 
         if (comando == "INC") {
-            ht->inserir(chave, "");  // Assume que inserir pode manipular valores vazios
+            ht->inserir(chave, "Valor");  // Assume que inserir pode manipular valores vazios
             // Pego o o PG e PL após inserção
-            out << linha << "/" << ht->getProfundidadeGlobal() << "," << ht->getProfundidadeLocal(chave) << std::endl;
+            out << linha << "/" << ht2->getProfundidadeGlobal() << "," << ht2->getProfundidadeLocal(chave) << std::endl;
         } else if (comando == "BUS") {
-            int count = ht->incidenciasDeChave(chave);
+            int count = ht2->incidenciasDeChave(chave);
             out << linha << "/" << count << std::endl;
         } else if (comando == "REM") {
             int count = 0;
-            while (ht->remover(chave)){
+            while (ht2->remover(chave)){
                 count += 1;
             }
             // Pego o PG e PL dps da remoção
-            out << linha << "/" << count << "," << ht->getProfundidadeGlobal() << "," << ht->getProfundidadeLocal(chave) << std::endl;
+            out << linha << "/" << count << "," << ht2->getProfundidadeGlobal() << "," << ht2->getProfundidadeLocal(chave) << std::endl;
         }
     }
 
     // Escreve o PG final
-    out << "P/" << ht->getProfundidadeGlobal() << std::endl;
+    out << "P/" << ht2->getProfundidadeGlobal() << std::endl;
 
     in.close();
     out.close();
@@ -469,17 +468,6 @@ int HashTable::incidenciasDeChave(int chave) {
     return count;  // Retorna string vazia se a chave n for encontrada no arquivo
 }
 
-void HashTable::atualizarIndice() {
-    std::ofstream out(pathIndice);
-    if (!out.is_open()) {
-        throw std::runtime_error("Não foi possível abrir o arquivo de índice para escrita.");
-    }
-    out << "PG:" << this->profundidadeGlobal << std::endl;
-    int numBuckets = std::pow(2, this->profundidadeGlobal);
-    for (int i = 0; i < numBuckets; i++) {
-        out << std::setw(this->profundidadeGlobal) << std::setfill('0') << std::to_string(i) << std::endl;
-    }
-}
 
 std::string HashTable::getBucketPath(int indice) {
     std::ifstream in(this->pathIndice);
@@ -491,3 +479,4 @@ std::string HashTable::getBucketPath(int indice) {
     }
     return "../data/buckets/" + line + ".txt";
 }
+

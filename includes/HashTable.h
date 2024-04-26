@@ -26,12 +26,11 @@ private:
     int funcaoHash(int chave);
     std::list<std::string> extrairRegistrosDoBucket(Bucket* bucket);
     void apagarConteudoArquivo(Bucket* bucket);
-    void atualizarIndice();
     std::string getBucketPath(int indice);
 
 public:
     std::vector<Bucket*> vetorDeBuckets;
-    HashTable(int profundidadeGlobal, const std::string& pathIndice);
+    HashTable(int profundidadeGlobal);
     void carregarTabela(HashTable* ht);
     void inserir(int chave, const std::string& valor);
     bool remover(int chave);

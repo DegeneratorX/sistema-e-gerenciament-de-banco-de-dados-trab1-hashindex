@@ -8,24 +8,26 @@
 #include <fstream>
 #include <sstream>
 #include <list>
+#include <cstdio>
+#include <filesystem>
 
 #ifndef SGBD_TRABALHO1_HASH_HASHTABLE_H
 #define SGBD_TRABALHO1_HASH_HASHTABLE_H
 
-int countLinesInFile(const std::string& filePath);
+int contadorDeRegistros(Bucket* bucket);
 
 class HashTable{
 private:
-    std::vector<Bucket*> vetorBuckets;
-    int qtdBuckets;
+
+    int qtdDeBuckets;
     int profundidadeGlobal;
 
     int funcaoHash(int chave);
-    void alocarBuckets();
-    std::list<std::string> bufferBucket(int id);
-    void apagarConteudoArquivo(const std::string& diretorioArquivo);
+    std::list<std::string> extrairRegistrosDoBucket(Bucket* bucket);
+    void apagarConteudoArquivo(Bucket* bucket);
 
 public:
+    std::vector<Bucket*> vetorDeBuckets;
     HashTable(int profundidadeGlobal);
     void carregarTabela(const std::string& arquivo);
     void inserir(int chave, const std::string& valor);

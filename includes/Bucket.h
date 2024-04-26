@@ -10,12 +10,12 @@
 
 class Bucket {
 public:
-    std::string arquivo;
-    int id;
-    int tam;
+    int idDoBucket;
+    int tamDoBucket;
     int profundidadeLocal;
+    std::string pathDoBucket;
 
-    Bucket();
+    Bucket(int idDoBucket, int tamDoBucket, int profundidadeLocal, const std::string& pathDoBucket);
 };
 
 

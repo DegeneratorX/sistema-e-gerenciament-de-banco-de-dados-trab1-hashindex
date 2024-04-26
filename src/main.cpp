@@ -1,6 +1,6 @@
 #include <iostream>
 #include "HashTable.h"
-
+/*
 int main(){
     HashTable* ht = new HashTable(2);
     ht->inserir(2, "2");
@@ -13,24 +13,27 @@ int main(){
     ht->inserir(7, "7");
     ht->inserir(15, "15");
     ht->inserir(19, "19");
-    ht->remover(2);
+    ht->remover(4);
+    ht->inserir(4, "4");
+    ht->inserir(16, "16");
+
+    std::cout << ht->vetorDeBuckets.size() << std::endl;
+    std::cout << ht->vetorDeBuckets[0]->profundidadeLocal << std::endl;
+    std::cout << ht->vetorDeBuckets[4]->profundidadeLocal << std::endl;
 }
-/*
+*/
+
 int main() {
     try {
-        // Arquivo de entrada
         std::ifstream arqEntrada("../data/io/in.txt");
         if (!arqEntrada) {
-            throw std::runtime_error("Erro: não foi possível abrir o arquivo in.txt");
+            throw std::runtime_error("Erro: não foi possível abrir o pathDoBucket in.txt");
         }
-
-        // Arquivo de saída
         std::ofstream arqSaida("../data/io/out.txt");
         if (!arqSaida) {
-            throw std::runtime_error("Erro: não foi possível abrir o arquivo out.txt");
+            throw std::runtime_error("Erro: não foi possível abrir o pathDoBucket out.txt");
         }
 
-        // Ler a profundidade global inicial do diretório de hash
         int profundidadeInicial;
         std::string linha;
         std::getline(arqEntrada, linha);
@@ -40,7 +43,6 @@ int main() {
 
         HashTable* ht = new HashTable(profundidadeInicial);
 
-        // Carrego o CSV
         ht->carregarTabela("../data/tabelas/compras.csv");
 
         int chave;
@@ -56,7 +58,7 @@ int main() {
             std::cout << "Operacao: " << acao << " || Chave: " << chave << "|| Valor: " << valor << std::endl;
 
             if (acao == "INC") {
-                ht->inserir(chave, valor); // Suponha que a entrada de dados seja uma string genérica
+                ht->inserir(chave, valor);
                 arqSaida << "INC:" << chave;
             }
             else if (acao == "REM") {
@@ -76,7 +78,4 @@ int main() {
         std::cerr << "Exceção capturada: " << e.what() << std::endl;
         return EXIT_FAILURE;
     }
-
-    return EXIT_SUCCESS;
 }
- */

@@ -4,6 +4,9 @@
 
 #include "Bucket.h"
 
-Bucket::Bucket(){
-
+Bucket::Bucket(int idDoBucket, int tamDoBucket, int profundidadeLocal, const std::string& pathDoBucket){
+    this->idDoBucket = idDoBucket;
+    this->tamDoBucket = tamDoBucket;
+    this->profundidadeLocal = profundidadeLocal;
+    this->pathDoBucket = pathDoBucket;
 }

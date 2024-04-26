@@ -189,6 +189,7 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/HashTable.cpp.o: /home/arida01/Documentos
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/c++/11/array \
   /usr/include/c++/11/backward/binders.h \
   /usr/include/c++/11/bits/alloc_traits.h \
   /usr/include/c++/11/bits/allocated_ptr.h \
@@ -207,27 +208,40 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/HashTable.cpp.o: /home/arida01/Documentos
   /usr/include/c++/11/bits/exception.h \
   /usr/include/c++/11/bits/exception_defines.h \
   /usr/include/c++/11/bits/exception_ptr.h \
+  /usr/include/c++/11/bits/fs_dir.h \
+  /usr/include/c++/11/bits/fs_fwd.h \
+  /usr/include/c++/11/bits/fs_ops.h \
+  /usr/include/c++/11/bits/fs_path.h \
   /usr/include/c++/11/bits/fstream.tcc \
   /usr/include/c++/11/bits/functexcept.h \
   /usr/include/c++/11/bits/functional_hash.h \
   /usr/include/c++/11/bits/hash_bytes.h \
+  /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/bits/ios_base.h \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/bits/list.tcc \
   /usr/include/c++/11/bits/locale_classes.h \
   /usr/include/c++/11/bits/locale_classes.tcc \
+  /usr/include/c++/11/bits/locale_conv.h \
   /usr/include/c++/11/bits/locale_facets.h \
   /usr/include/c++/11/bits/locale_facets.tcc \
+  /usr/include/c++/11/bits/locale_facets_nonio.h \
+  /usr/include/c++/11/bits/locale_facets_nonio.tcc \
   /usr/include/c++/11/bits/localefwd.h \
   /usr/include/c++/11/bits/memoryfwd.h \
   /usr/include/c++/11/bits/move.h \
   /usr/include/c++/11/bits/nested_exception.h \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/bits/ostream_insert.h \
+  /usr/include/c++/11/bits/parse_numbers.h \
   /usr/include/c++/11/bits/postypes.h \
   /usr/include/c++/11/bits/predefined_ops.h \
   /usr/include/c++/11/bits/ptr_traits.h \
+  /usr/include/c++/11/bits/quoted_string.h \
   /usr/include/c++/11/bits/range_access.h \
+  /usr/include/c++/11/bits/refwrap.h \
+  /usr/include/c++/11/bits/shared_ptr.h \
+  /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/bits/specfun.h \
   /usr/include/c++/11/bits/sstream.tcc \
   /usr/include/c++/11/bits/std_abs.h \
@@ -240,20 +254,26 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/HashTable.cpp.o: /home/arida01/Documentos
   /usr/include/c++/11/bits/stl_iterator_base_types.h \
   /usr/include/c++/11/bits/stl_list.h \
   /usr/include/c++/11/bits/stl_pair.h \
+  /usr/include/c++/11/bits/stl_relops.h \
   /usr/include/c++/11/bits/stl_uninitialized.h \
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/streambuf.tcc \
   /usr/include/c++/11/bits/streambuf_iterator.h \
   /usr/include/c++/11/bits/string_view.tcc \
   /usr/include/c++/11/bits/stringfwd.h \
+  /usr/include/c++/11/bits/unique_ptr.h \
+  /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/bits/vector.tcc \
   /usr/include/c++/11/cctype \
   /usr/include/c++/11/cerrno \
+  /usr/include/c++/11/chrono \
   /usr/include/c++/11/clocale \
   /usr/include/c++/11/cmath \
+  /usr/include/c++/11/codecvt \
   /usr/include/c++/11/cstdint \
   /usr/include/c++/11/cstdio \
   /usr/include/c++/11/cstdlib \
+  /usr/include/c++/11/ctime \
   /usr/include/c++/11/cwchar \
   /usr/include/c++/11/cwctype \
   /usr/include/c++/11/debug/assertions.h \
@@ -262,21 +282,26 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/HashTable.cpp.o: /home/arida01/Documentos
   /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/alloc_traits.h \
   /usr/include/c++/11/ext/atomicity.h \
+  /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/ext/new_allocator.h \
   /usr/include/c++/11/ext/numeric_traits.h \
   /usr/include/c++/11/ext/string_conversions.h \
   /usr/include/c++/11/ext/type_traits.h \
+  /usr/include/c++/11/filesystem \
   /usr/include/c++/11/fstream \
   /usr/include/c++/11/initializer_list \
+  /usr/include/c++/11/iomanip \
   /usr/include/c++/11/ios \
   /usr/include/c++/11/iosfwd \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/limits \
   /usr/include/c++/11/list \
+  /usr/include/c++/11/locale \
   /usr/include/c++/11/new \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/pstl/pstl_config.h \
+  /usr/include/c++/11/ratio \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/stdexcept \
   /usr/include/c++/11/streambuf \
@@ -295,14 +320,17 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/HashTable.cpp.o: /home/arida01/Documentos
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
   /usr/include/c++/11/tr1/special_function_util.h \
+  /usr/include/c++/11/tuple \
   /usr/include/c++/11/type_traits \
   /usr/include/c++/11/typeinfo \
+  /usr/include/c++/11/utility \
   /usr/include/c++/11/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
+  /usr/include/libintl.h \
   /usr/include/linux/errno.h \
   /usr/include/locale.h \
   /usr/include/math.h \
@@ -397,7 +425,9 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/HashTable.cpp.o: /home/arida01/Documentos
   /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -414,6 +444,7 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/c++/11/array \
   /usr/include/c++/11/backward/binders.h \
   /usr/include/c++/11/bits/alloc_traits.h \
   /usr/include/c++/11/bits/allocated_ptr.h \
@@ -432,27 +463,40 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
   /usr/include/c++/11/bits/exception.h \
   /usr/include/c++/11/bits/exception_defines.h \
   /usr/include/c++/11/bits/exception_ptr.h \
+  /usr/include/c++/11/bits/fs_dir.h \
+  /usr/include/c++/11/bits/fs_fwd.h \
+  /usr/include/c++/11/bits/fs_ops.h \
+  /usr/include/c++/11/bits/fs_path.h \
   /usr/include/c++/11/bits/fstream.tcc \
   /usr/include/c++/11/bits/functexcept.h \
   /usr/include/c++/11/bits/functional_hash.h \
   /usr/include/c++/11/bits/hash_bytes.h \
+  /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/bits/ios_base.h \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/bits/list.tcc \
   /usr/include/c++/11/bits/locale_classes.h \
   /usr/include/c++/11/bits/locale_classes.tcc \
+  /usr/include/c++/11/bits/locale_conv.h \
   /usr/include/c++/11/bits/locale_facets.h \
   /usr/include/c++/11/bits/locale_facets.tcc \
+  /usr/include/c++/11/bits/locale_facets_nonio.h \
+  /usr/include/c++/11/bits/locale_facets_nonio.tcc \
   /usr/include/c++/11/bits/localefwd.h \
   /usr/include/c++/11/bits/memoryfwd.h \
   /usr/include/c++/11/bits/move.h \
   /usr/include/c++/11/bits/nested_exception.h \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/bits/ostream_insert.h \
+  /usr/include/c++/11/bits/parse_numbers.h \
   /usr/include/c++/11/bits/postypes.h \
   /usr/include/c++/11/bits/predefined_ops.h \
   /usr/include/c++/11/bits/ptr_traits.h \
+  /usr/include/c++/11/bits/quoted_string.h \
   /usr/include/c++/11/bits/range_access.h \
+  /usr/include/c++/11/bits/refwrap.h \
+  /usr/include/c++/11/bits/shared_ptr.h \
+  /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/bits/specfun.h \
   /usr/include/c++/11/bits/sstream.tcc \
   /usr/include/c++/11/bits/std_abs.h \
@@ -465,20 +509,26 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
   /usr/include/c++/11/bits/stl_iterator_base_types.h \
   /usr/include/c++/11/bits/stl_list.h \
   /usr/include/c++/11/bits/stl_pair.h \
+  /usr/include/c++/11/bits/stl_relops.h \
   /usr/include/c++/11/bits/stl_uninitialized.h \
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/streambuf.tcc \
   /usr/include/c++/11/bits/streambuf_iterator.h \
   /usr/include/c++/11/bits/string_view.tcc \
   /usr/include/c++/11/bits/stringfwd.h \
+  /usr/include/c++/11/bits/unique_ptr.h \
+  /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/bits/vector.tcc \
   /usr/include/c++/11/cctype \
   /usr/include/c++/11/cerrno \
+  /usr/include/c++/11/chrono \
   /usr/include/c++/11/clocale \
   /usr/include/c++/11/cmath \
+  /usr/include/c++/11/codecvt \
   /usr/include/c++/11/cstdint \
   /usr/include/c++/11/cstdio \
   /usr/include/c++/11/cstdlib \
+  /usr/include/c++/11/ctime \
   /usr/include/c++/11/cwchar \
   /usr/include/c++/11/cwctype \
   /usr/include/c++/11/debug/assertions.h \
@@ -487,21 +537,26 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
   /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/alloc_traits.h \
   /usr/include/c++/11/ext/atomicity.h \
+  /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/ext/new_allocator.h \
   /usr/include/c++/11/ext/numeric_traits.h \
   /usr/include/c++/11/ext/string_conversions.h \
   /usr/include/c++/11/ext/type_traits.h \
+  /usr/include/c++/11/filesystem \
   /usr/include/c++/11/fstream \
   /usr/include/c++/11/initializer_list \
+  /usr/include/c++/11/iomanip \
   /usr/include/c++/11/ios \
   /usr/include/c++/11/iosfwd \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/limits \
   /usr/include/c++/11/list \
+  /usr/include/c++/11/locale \
   /usr/include/c++/11/new \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/pstl/pstl_config.h \
+  /usr/include/c++/11/ratio \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/stdexcept \
   /usr/include/c++/11/streambuf \
@@ -520,14 +575,17 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
   /usr/include/c++/11/tr1/special_function_util.h \
+  /usr/include/c++/11/tuple \
   /usr/include/c++/11/type_traits \
   /usr/include/c++/11/typeinfo \
+  /usr/include/c++/11/utility \
   /usr/include/c++/11/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
+  /usr/include/libintl.h \
   /usr/include/linux/errno.h \
   /usr/include/locale.h \
   /usr/include/math.h \
@@ -622,7 +680,9 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
   /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -636,11 +696,15 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
 
 /home/arida01/Documentos/Victor/Projetos/sistema-e-gerenciamento-de-banco-de-dados-trab1-hashindex/src/main.cpp:
 
+/usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h:
+
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
 
 /usr/include/x86_64-linux-gnu/bits/math-vector.h:
 
 /usr/include/math.h:
+
+/usr/include/libintl.h:
 
 /usr/include/c++/11/vector:
 
@@ -658,17 +722,29 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
 
 /usr/include/c++/11/tr1/ell_integral.tcc:
 
-/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
-
-/usr/include/c++/11/tr1/beta_function.tcc:
-
 /usr/include/c++/11/tr1/bessel_function.tcc:
+
+/usr/include/c++/11/ratio:
+
+/usr/include/c++/11/locale:
 
 /usr/include/c++/11/list:
 
 /usr/include/c++/11/limits:
 
+/usr/include/c++/11/iomanip:
+
 /usr/include/c++/11/fstream:
+
+/usr/include/c++/11/filesystem:
+
+/usr/include/c++/11/ctime:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
+
+/usr/include/c++/11/tr1/beta_function.tcc:
+
+/usr/include/c++/11/codecvt:
 
 /usr/include/c++/11/bits/vector.tcc:
 
@@ -676,11 +752,37 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
 
 /usr/include/c++/11/bits/stl_bvector.h:
 
-/usr/include/c++/11/bits/specfun.h:
+/usr/include/c++/11/bits/shared_ptr_base.h:
+
+/usr/include/c++/11/bits/shared_ptr.h:
+
+/usr/include/c++/11/bits/refwrap.h:
+
+/usr/include/c++/11/bits/quoted_string.h:
+
+/usr/include/c++/11/bits/locale_facets_nonio.tcc:
+
+/usr/include/c++/11/bits/locale_facets_nonio.h:
+
+/usr/include/c++/11/bits/locale_conv.h:
+
+/usr/include/c++/11/utility:
 
 /usr/include/c++/11/bits/list.tcc:
 
+/usr/include/c++/11/bits/specfun.h:
+
+/usr/include/c++/11/bits/invoke.h:
+
+/usr/include/c++/11/bits/fs_ops.h:
+
+/usr/include/c++/11/bits/fs_fwd.h:
+
+/usr/include/c++/11/bits/fs_dir.h:
+
 /usr/include/c++/11/bits/allocated_ptr.h:
+
+/usr/include/c++/11/array:
 
 /home/arida01/Documentos/Victor/Projetos/sistema-e-gerenciamento-de-banco-de-dados-trab1-hashindex/includes/HashTable.h:
 
@@ -714,7 +816,11 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
 
 /usr/include/c++/11/ios:
 
+/usr/include/c++/11/bits/unique_ptr.h:
+
 /usr/include/c++/11/ext/type_traits.h:
+
+/usr/include/c++/11/ext/concurrence.h:
 
 /usr/include/c++/11/initializer_list:
 
@@ -756,6 +862,8 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h:
 
+/usr/include/c++/11/bits/fs_path.h:
+
 /usr/include/c++/11/cstdint:
 
 /usr/include/c++/11/cerrno:
@@ -784,6 +892,8 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
 
 /usr/include/c++/11/bits/char_traits.h:
 
+/usr/include/c++/11/tuple:
+
 /usr/include/c++/11/ostream:
 
 /usr/include/c++/11/ext/new_allocator.h:
@@ -791,6 +901,8 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
 /usr/include/c++/11/bits/ptr_traits.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h:
 
 /usr/include/alloca.h:
 
@@ -888,6 +1000,8 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
 
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
 
+/usr/include/c++/11/bits/parse_numbers.h:
+
 /usr/include/c++/11/bits/stl_pair.h:
 
 /usr/include/c++/11/bits/alloc_traits.h:
@@ -905,6 +1019,8 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+
+/usr/include/c++/11/bits/stl_relops.h:
 
 /usr/include/c++/11/bits/cpp_type_traits.h:
 
@@ -956,6 +1072,8 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
 
 /usr/include/sched.h:
 
+/usr/include/c++/11/bits/uses_allocator.h:
+
 /usr/include/stdc-predef.h:
 
 /usr/include/stdint.h:
@@ -969,6 +1087,8 @@ CMakeFiles/sgbd_trabalho1_hash.dir/src/main.cpp.o: /home/arida01/Documentos/Vict
 /usr/include/c++/11/bits/range_access.h:
 
 /usr/include/stdlib.h:
+
+/usr/include/c++/11/chrono:
 
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 

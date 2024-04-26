@@ -19,10 +19,12 @@
  * caminho de onde esse arquivo vai ser criado em seguida (../data/buckets/id.txt). Se der erro na criação, ele dá um
  * rollback e apaga os arquivos inicialmente criados.
  */
-HashTable::HashTable(int profundidadeGlobal){
+HashTable::HashTable(int profundidadeGlobal, const std::string& pathIndice){
     this->profundidadeGlobal = profundidadeGlobal;
     this->qtdDeBuckets = static_cast<int>(std::pow(2, profundidadeGlobal));
     this->vetorDeBuckets.resize(this->qtdDeBuckets);
+    this->pathIndice = pathIndice;
+    this->atualizarIndice();
 
     for (int i = 0; i < this->qtdDeBuckets; i++){
         const std::string pathDoBucket = "../data/buckets/" + std::to_string(i) + ".txt";
@@ -60,24 +62,32 @@ int HashTable::funcaoHash(int chave){
 }
 
 
-void HashTable::carregarTabela(const std::string& arquivo) {
-    std::ifstream csv(arquivo);
-    if (!csv) {
-        std::cout << "Erro: n foi possivel abrir o csv " << arquivo << std::endl;
+void HashTable::carregarTabela(HashTable* ht) {
+    const std::string pathDoCSV = "../data/tabelas/compras.csv";
+    std::ifstream arquivoDoCSV(pathDoCSV);
+    if (!arquivoDoCSV.is_open()) {
+        std::cerr << "Erro ao abrir o arquivo CSV: " << "../data/tabelas/compras.csv" << std::endl;
         return;
     }
 
     std::string linha;
-    while (std::getline(csv, linha)) {
-        std::istringstream linhaStream(linha);
-        int pedido;
-        std::string valor;
+    while (getline(arquivoDoCSV, linha)) {
+        std::istringstream iss(linha);
+        std::string id, valor, ano;
+        getline(iss, id, ',');
+        getline(iss, valor, ',');
+        getline(iss, ano, ',');
 
-        char delimitador;
-        if (linhaStream >> pedido >> delimitador && delimitador == ',' && std::getline(linhaStream, valor)) {
-            this->inserir(pedido, valor);
+        // Monta a string para ser armazenada como valor na tabela hash
+        std::string valorHash = id + "," + valor + "," + ano;
+
+        // Insere na tabela hash
+        if (!ano.empty()) {
+            ht->inserir(std::stoi(ano), valorHash);
         }
     }
+
+    arquivoDoCSV.close();
 }
 
 
@@ -108,6 +118,18 @@ void HashTable::carregarTabela(const std::string& arquivo) {
 void HashTable::inserir(int chave, const std::string& valor){
 
     int indiceDoBucket = this->funcaoHash(chave);
+    std::string pathBucket = this->getBucketPath(indiceDoBucket);
+
+    // Verificação que faço pra ver se o bucket que quero inserir está vazio e já foi um bucket previamente usado com PL
+    // incrementado, mas que depois de esvaziar foi decrementado
+    if (this->vetorDeBuckets[indiceDoBucket] == nullptr || !std::filesystem::exists(this->vetorDeBuckets[indiceDoBucket]->pathDoBucket)) {
+        this->vetorDeBuckets[indiceDoBucket] = new Bucket(indiceDoBucket, 0, this->profundidadeGlobal, "../data/buckets/" + std::to_string(indiceDoBucket) + ".txt");
+        int indiceDoBucketPai = indiceDoBucket & (~(1 << (this->vetorDeBuckets[indiceDoBucket]->profundidadeLocal - 1)));
+
+        // Incremento o PL de ambos, bucket e o pai, pra restaurar estado anterior da exclusão
+        this->vetorDeBuckets[indiceDoBucket]->profundidadeLocal = this->profundidadeGlobal;
+        this->vetorDeBuckets[indiceDoBucketPai]->profundidadeLocal = this->profundidadeGlobal;
+    }
 
     // Leitura do txt do bucket correspondente ao índice (1.txt, 2.txt etc...)
     std::ofstream arquivoDoBucket(this->vetorDeBuckets[indiceDoBucket]->pathDoBucket, std::ios::app);
@@ -151,7 +173,13 @@ void HashTable::inserir(int chave, const std::string& valor){
          * terão PG = PL = 3, o resto terá PL = 2. O novo bucket será o 07 que irá receber dados de 03.
          */
         Bucket* bucketOverflow = this->vetorDeBuckets[indiceDoBucket];
-        Bucket* novoBucket = this->vetorDeBuckets[indiceDoBucket + this->qtdDeBuckets / 2];
+        Bucket* novoBucket;
+        if (indiceDoBucket < this->qtdDeBuckets/2) {
+            novoBucket = this->vetorDeBuckets[indiceDoBucket + this->qtdDeBuckets / 2];
+        }
+        else {
+            novoBucket = this->vetorDeBuckets[indiceDoBucket - this->qtdDeBuckets / 2];
+        }
         novoBucket->pathDoBucket = "../data/buckets/" + std::to_string(novoBucket->idDoBucket) + ".txt";
         std::ofstream novoArquivoBucket(novoBucket->pathDoBucket);
 
@@ -188,7 +216,6 @@ void HashTable::inserir(int chave, const std::string& valor){
 
 
 std::list<std::string> HashTable::extrairRegistrosDoBucket(Bucket* bucket) {
-    // std::string pathDoBucket = "../data/buckets/" + std::to_string(bucket->idDoBucket) + ".txt";
     // Função que lê um pathDoBucket de texto e retorna uma lista encadeada com as linhas
     std::ifstream arquivoDoBucket(bucket->pathDoBucket);
     std::list<std::string> linhas;
@@ -243,13 +270,14 @@ std::string HashTable::consultarValor(int chave) {
  *
  * Essa função é muito complexa. Basicamente ela retira tudo do arquivo e redistribui. Não retira apenas um registro/tupla.
  */
-void HashTable::remover(int chave){
+bool HashTable::remover(int chave){
+    bool removeu = false;
     int indiceDoBucket = this->funcaoHash(chave);
 
     std::ifstream arquivoDoBucket(this->vetorDeBuckets[indiceDoBucket]->pathDoBucket);
     if (!arquivoDoBucket) {
         std::cerr << "Erro no método de inserção: não foi posível abrir o pathDoBucket de bucket localizado em " << this->vetorDeBuckets[indiceDoBucket]->pathDoBucket << std::endl;
-        return;  // Remove nada caso n encontre
+        return removeu;  // Remove nada caso n encontre
     }
 
     /**
@@ -268,32 +296,41 @@ void HashTable::remover(int chave){
             int chaveInt = std::stoi(chaveStr);
             if (chaveInt != chave){
                 this->inserir(chaveInt, valorStr);
-            }
+            } else {removeu = true;}
         } else {
             std::cerr << "Erro no método de inserção: formato inválido de registro: " << registro << std::endl;
         }
     }
 
-    int aux = 0;
+    arquivoDoBucket.close();
+    // Verifique se o bucket está vazio após a remoção
+    if (contadorDeRegistros(this->vetorDeBuckets[indiceDoBucket]) == 0) {
+        std::filesystem::remove(this->vetorDeBuckets[indiceDoBucket]->pathDoBucket);
+        this->vetorDeBuckets[indiceDoBucket]->tamDoBucket = 0; // Zerar o tamanho do bucket
+        this->vetorDeBuckets[indiceDoBucket]->profundidadeLocal--;
 
-    if (this->vetorDeBuckets[indiceDoBucket]->tamDoBucket == 0){
-        std::filesystem::remove("../data/buckets/" + std::to_string(indiceDoBucket) + ".txt");
-    }
+        // Identificar o bucket pai e verificar sua situação
+        int indiceDoBucketPai = indiceDoBucket & (~(1 << (this->vetorDeBuckets[indiceDoBucket]->profundidadeLocal)));
+        if (this->vetorDeBuckets[indiceDoBucketPai]->profundidadeLocal > this->vetorDeBuckets[indiceDoBucket]->profundidadeLocal) {
+            this->vetorDeBuckets[indiceDoBucketPai]->profundidadeLocal--;
+        }
 
-    for (auto i = 1; i < this->qtdDeBuckets; i++){
-        if (this->vetorDeBuckets[i-1]->profundidadeLocal == this->vetorDeBuckets[i]->profundidadeLocal && this->vetorDeBuckets[i]->profundidadeLocal < this->profundidadeGlobal){
-            aux += 1;
+        // Verificar se é necessário reduzir o PG
+        bool reduzirPG = true;
+        for (auto& bucket : this->vetorDeBuckets) {
+            if (bucket->profundidadeLocal == this->profundidadeGlobal) {
+                reduzirPG = false;
+                break;
+            }
+        }
+
+        // Se todos os PLs forem menores que PG, reduza o PG
+        if (reduzirPG) {
+            this->profundidadeGlobal--;
+            this->vetorDeBuckets.resize(std::pow(2, this->profundidadeGlobal));
         }
     }
-    if (aux == qtdDeBuckets){
-        for (int i = this->qtdDeBuckets/2; i < qtdDeBuckets; i++){
-            delete this->vetorDeBuckets[i];
-        }
-        this->profundidadeGlobal -= 1;
-        this->qtdDeBuckets = static_cast<int>(std::pow(2, this->profundidadeGlobal));
-        this->vetorDeBuckets.resize(this->qtdDeBuckets);
-    }
-
+    return removeu;
 
     /*
     if (contadorDeRegistros(this->vetorDeBuckets[indiceDoBucket]->pathDoBucket) == 0){
@@ -328,7 +365,19 @@ void HashTable::apagarConteudoArquivo(Bucket* bucket) {
     arquivo.close(); // Fechando o pathDoBucket
 }
 
+
+int HashTable::getProfundidadeGlobal() {
+    return this->profundidadeGlobal;
+}
+
+int HashTable::getProfundidadeLocal(int chave) {
+    int indiceDoBucket = this->funcaoHash(chave);
+    return this->vetorDeBuckets[indiceDoBucket]->profundidadeLocal;
+}
+
+
 int contadorDeRegistros(Bucket* bucket) {
+
     std::ifstream file(bucket->pathDoBucket);
     int contadorLinhas = 0;
     std::string linha;
@@ -343,5 +392,102 @@ int contadorDeRegistros(Bucket* bucket) {
     }
 
     file.close();  // Fechando o pathDoBucket após o uso
+    std::cout << std::endl;
     return contadorLinhas;
+}
+
+void leituraInTxt(const std::string& inTxt, const std::string& outTxt, HashTable* ht){
+    std::ifstream in(inTxt);
+    std::ofstream out(outTxt);
+
+    if (!in.is_open() || !out.is_open()) {
+        std::cerr << "Erro ao abrir arquivos." << std::endl;
+        return;
+    }
+
+    std::string linha;
+    getline(in, linha);  // Lê a profundidade global inicial
+    int profundidadeGlobalInicial = std::stoi(linha.substr(3));
+    out << linha << std::endl;  // Escreve a profundidade global inicial no arquivo de saída
+
+    while (getline(in, linha)) {
+        std::istringstream iss(linha);
+        std::string comando, chaveStr;
+        getline(iss, comando, ':');
+        getline(iss, chaveStr);
+        int chave = std::stoi(chaveStr);
+
+        if (comando == "INC") {
+            ht->inserir(chave, "");  // Assume que inserir pode manipular valores vazios
+            // Pego o o PG e PL após inserção
+            out << linha << "/" << ht->getProfundidadeGlobal() << "," << ht->getProfundidadeLocal(chave) << std::endl;
+        } else if (comando == "BUS") {
+            int count = ht->incidenciasDeChave(chave);
+            out << linha << "/" << count << std::endl;
+        } else if (comando == "REM") {
+            int count = 0;
+            while (ht->remover(chave)){
+                count += 1;
+            }
+            // Pego o PG e PL dps da remoção
+            out << linha << "/" << count << "," << ht->getProfundidadeGlobal() << "," << ht->getProfundidadeLocal(chave) << std::endl;
+        }
+    }
+
+    // Escreve o PG final
+    out << "P/" << ht->getProfundidadeGlobal() << std::endl;
+
+    in.close();
+    out.close();
+}
+
+int HashTable::incidenciasDeChave(int chave) {
+    int indiceDoBucket = this->funcaoHash(chave);
+
+    // Abre o arquivo do balde pra leitura
+    std::ifstream arquivoDoBucket(this->vetorDeBuckets[indiceDoBucket]->pathDoBucket);
+    if (!arquivoDoBucket) {
+        std::cout << "Erro no método de consultar valor: não foi possível abrir o arquivo de bucket localizado em " << this->vetorDeBuckets[indiceDoBucket]->pathDoBucket << std::endl;
+        return -1;  // Retorna string vazia caso n encontre
+    }
+
+    std::string linha;
+
+    int count = 0;
+    while (getline(arquivoDoBucket, linha)) {
+        std::stringstream ss(linha);
+        int chaveIterador;
+
+        getline(ss, linha, ',');  // Lê até a vírgula, pegando a chave
+        chaveIterador = std::stoi(linha);  // Converte a chave de string para int
+
+        if (chaveIterador == chave) {
+            count += 1;
+        }
+    }
+
+    return count;  // Retorna string vazia se a chave n for encontrada no arquivo
+}
+
+void HashTable::atualizarIndice() {
+    std::ofstream out(pathIndice);
+    if (!out.is_open()) {
+        throw std::runtime_error("Não foi possível abrir o arquivo de índice para escrita.");
+    }
+    out << "PG:" << this->profundidadeGlobal << std::endl;
+    int numBuckets = std::pow(2, this->profundidadeGlobal);
+    for (int i = 0; i < numBuckets; i++) {
+        out << std::setw(this->profundidadeGlobal) << std::setfill('0') << std::to_string(i) << std::endl;
+    }
+}
+
+std::string HashTable::getBucketPath(int indice) {
+    std::ifstream in(this->pathIndice);
+    std::string line;
+    // Pular a linha do PG
+    std::getline(in, line);
+    for (int i = 0; i <= indice; ++i) {
+        std::getline(in, line);
+    }
+    return "../data/buckets/" + line + ".txt";
 }

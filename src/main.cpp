@@ -1,8 +1,11 @@
 #include <iostream>
 #include "HashTable.h"
-/*
+
 int main(){
-    HashTable* ht = new HashTable(2);
+    HashTable* ht = new HashTable(2, "../data/indices/indice.txt");
+    ht->carregarTabela(ht);
+    leituraInTxt("../data/io/in.txt","../data/io/out.txt", ht);
+    /*
     ht->inserir(2, "2");
     ht->inserir(4, "4");
     ht->inserir(5, "5");
@@ -15,14 +18,14 @@ int main(){
     ht->inserir(19, "19");
     ht->remover(4);
     ht->inserir(4, "4");
-    ht->inserir(16, "16");
 
     std::cout << ht->vetorDeBuckets.size() << std::endl;
     std::cout << ht->vetorDeBuckets[0]->profundidadeLocal << std::endl;
     std::cout << ht->vetorDeBuckets[4]->profundidadeLocal << std::endl;
+     */
 }
-*/
 
+/*
 int main() {
     try {
         std::ifstream arqEntrada("../data/io/in.txt");
@@ -79,3 +82,4 @@ int main() {
         return EXIT_FAILURE;
     }
 }
+*/
